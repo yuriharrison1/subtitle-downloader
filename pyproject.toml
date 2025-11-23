@@ -1,0 +1,185 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "subtitle-downloader"
+dynamic = ["version"]
+description = "Automatic subtitle downloader with file manager integration"
+authors = [
+    {name = "Your Name", email = "your@email.com"}
+]
+maintainers = [
+    {name = "Your Name", email = "your@email.com"}
+]
+license = {text = "GPL-3.0-or-later"}
+readme = {file = "README.md", content-type = "text/markdown"}
+requires-python = ">=3.7"
+keywords = [
+    "subtitle", 
+    "download", 
+    "video", 
+    "opensubtitles", 
+    "file-manager",
+    "linux",
+    "desktop"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: POSIX :: Linux :: Ubuntu",
+    "Operating System :: POSIX :: Linux :: Debian",
+    "Operating System :: POSIX :: Linux :: Fedora",
+    "Operating System :: POSIX :: Linux :: openSUSE",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Desktop Environment",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "subliminal>=2.1.0,<3.0",
+]
+
+[project.optional-dependencies]
+qt = [
+    "PyQt5>=5.15,<6.0",
+    "PyQt5-Qt5>=5.15,<6.0",
+    "PyQt5-sip>=12.0,<13.0",
+]
+gtk = [
+    "PyGObject>=3.42,<4.0",
+]
+full = [
+    "PyQt5>=5.15,<6.0",
+    "PyQt5-Qt5>=5.15,<6.0", 
+    "PyQt5-sip>=12.0,<13.0",
+    "PyGObject>=3.42,<4.0",
+]
+dev = [
+    "pytest>=7.0,<8.0",
+    "pytest-cov>=4.0,<5.0",
+    "pytest-mock>=3.0,<4.0",
+    "black>=23.0,<24.0",
+    "flake8>=6.0,<7.0",
+    "mypy>=1.0,<2.0",
+    "pre-commit>=3.0,<4.0",
+    "build>=0.10,<1.0",
+    "twine>=4.0,<5.0",
+]
+test = [
+    "pytest>=7.0,<8.0",
+    "pytest-cov>=4.0,<5.0",
+    "pytest-mock>=3.0,<4.0",
+]
+
+[project.scripts]
+download-subtitle = "subtitle_downloader.__main__:main"
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/subtitle-downloader"
+"Documentation" = "https://github.com/yourusername/subtitle-downloader#readme"
+"Bug Reports" = "https://github.com/yourusername/subtitle-downloader/issues"
+"Source" = "https://github.com/yourusername/subtitle-downloader"
+"Changelog" = "https://github.com/yourusername/subtitle-downloader/releases"
+
+[project.entry-points."subtitle_downloader.providers"]
+opensubtitles = "subtitle_downloader.core:SubtitleDownloader"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["subtitle_downloader*"]
+exclude = ["tests*", "tests.*", "*.tests", "*.tests.*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.desktop", "*.py"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools_scm]
+write_to = "src/subtitle_downloader/_version.py"
+
+[tool.black]
+line-length = 88
+target-version = ['py37']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["subtitle_downloader"]
+
+[tool.mypy]
+python_version = "3.7"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = [
+    "--verbose",
+    "--strict-markers",
+    "--strict-config",
+    "--cov=subtitle_downloader",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+testpaths = ["tests"]
+markers = [
+    "unit: unit tests",
+    "integration: integration tests",
+    "gui: gui tests",
+]
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["subtitle_downloader"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__main__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]

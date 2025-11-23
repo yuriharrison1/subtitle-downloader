@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin,video/*
+MimeType=video/x-msvideo;video/quicktime;video/mp4;video/x-matroska;video/x-ms-wmv;video/webm;video/x-flv;video/3gpp;video/x-m4v;video/mpeg;video/x-ms-asf;video/x-ogm;video/ogg;video/dv;
+Actions=download-subtitle;
+
+[Desktop Action download-subtitle]
+Name=Download Subtitle
+Name[pt]=Baixar Legenda
+Name[en]=Download Subtitle
+Icon=text-x-subtitle
+Exec=download-subtitle.py %f

@@ -1,0 +1,28 @@
+# Logs
+*.log
+logs/
+
+# Configuration
+*.config
+config.json
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Project specific
+/.local/
