@@ -33,6 +33,6 @@ A cross-platform subtitle downloader with context menu integration for popular f
 ## Quick Install
 
 ```bash
-git clone https://github.com/yourusername/subtitle-downloader.git
+git clone https://github.com/yuriharrison1/subtitle-downloader.git
 cd subtitle-downloader
 ./scripts/install.sh
