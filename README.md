@@ -21,6 +21,15 @@ A cross-platform subtitle downloader with context menu integration for popular f
 - 🔄 **Auto-detection** of desktop environment
 - 📦 **Easy installation** with automatic dependency handling
 
+- 
+
+- <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/34324b5e-c56d-4aaf-97ed-a308c33c71fe" />
+
+
+- <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/c12e402d-d0f3-450c-9ec4-f9d2a2d4970b" />
+
+
+
 ## Quick Install
 
 ```bash
